@@ -1,0 +1,24 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~font-awesome/css/font-awesome.min.css";
+@import "~bootstrap/dist/css/bootstrap.css";
+
+body, html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+body {
+  background-color: #A48686;
+  padding: 20px;
+  margin: 0;
+  color: #FFF;
+
+}
+
+
+app-root {
+  flex-grow: 1;
+  min-height: 0;
+}
+
+

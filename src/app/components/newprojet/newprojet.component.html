@@ -1,0 +1,116 @@
+<div class="container">
+  <!--<form [formGroup]="projetFormGroup" *ngIf="projetFormGroup">
+    <table class="table">
+      <thead>
+      <td>Nom du projet</td>
+      <td>Date de debut</td>
+      <td>Date de fin</td>
+      <td>Cout</td>
+      <td>id du responsable</td>
+      </thead>
+      <tbody>
+      <td>
+        <input type ="text" class="form-control"
+               formControlName="nomproj">
+      </td>
+      <td>
+        <input type ="date" class="form-control"
+                  formControlName="datedebut">
+      </td>
+      <td>
+        <input type ="date" class="form-control"
+                  formControlName="datefin">
+      </td>
+
+      <td> <input type ="text" class="form-control"  formControlName="cout" min="1"></td>
+      <td>
+        <input type ="number" class="form-control" min="1" formControlName="idresponsable">
+      </td>
+      </tbody>
+    </table>
+    <button (click)="onSaveProjet()" class="btn btn-success">
+      Save
+    </button>
+  </form>-->
+  <div class="container">
+
+    <form [formGroup]="projetFormGroup" *ngIf="projetFormGroup">
+
+      <div class = "form-group">
+        <label>Nom du projet</label>
+        <input type ="text" class="form-control" formControlName="nomproj"
+               [ngClass]="{'is-invalid': submitted &&  projetFormGroup.controls.nomproj.errors}">
+        <div *ngIf="submitted &&  projetFormGroup.controls.nomproj.errors" class ="invalid-feedback">
+          <div *ngIf="projetFormGroup.controls.nomproj.errors.required">
+            Nom de projet obligatoire obligatoire
+          </div>
+        </div>
+      </div>
+
+      <div class = "form-group">
+        <label>Date de début</label>
+        <input type ="date" class="form-control" formControlName="datedebut"
+               [ngClass]="{'is-invalid': submitted &&  projetFormGroup.controls.datedebut.errors}">
+        <div *ngIf="submitted &&  projetFormGroup.controls.datedebut.errors" class ="invalid-feedback">
+          <div *ngIf="projetFormGroup.controls.datedebut.errors.required">
+            Date de début obligatoire
+          </div>
+        </div>
+      </div>
+
+      <div class = "form-group">
+        <label>Date de fin</label>
+        <input type ="date" class="form-control" formControlName="datefin"
+               [ngClass]="{'is-invalid': submitted &&  projetFormGroup.controls.datefin.errors}">
+        <div *ngIf="submitted &&  projetFormGroup.controls.datefin.errors" class ="invalid-feedback">
+          <div *ngIf="projetFormGroup.controls.datefin.errors.required">
+            Date de fin obligatoire
+          </div>
+        </div>
+      </div>
+
+      <div class = "form-group">
+        <label>Cout du projet</label>
+        <input type ="number" class="form-control" formControlName="cout" min="1"
+               [ngClass]="{'is-invalid': submitted &&  projetFormGroup.controls.cout.errors}">
+        <div *ngIf="submitted &&  projetFormGroup.controls.cout.errors" class ="invalid-feedback">
+          <div *ngIf="projetFormGroup.controls.cout.errors.required">
+            Le cout du projet est obligatoire (min 1€)
+          </div>
+        </div>
+      </div>
+    <!--
+      <div class = "form-group">
+        <label>ID du responsable de projet</label>
+        <input type ="text" class="form-control" formControlName="idresponsable"
+               [ngClass]="{'is-invalid': submitted &&  projetFormGroup.controls.idresponsable.errors}">
+        <div *ngIf="submitted &&  projetFormGroup.controls.idresponsable.errors" class ="invalid-feedback">
+          <div *ngIf="projetFormGroup.controls.idresponsable.errors.required">
+            Mail obligatoire
+          </div>
+        </div>
+      </div>
+      -->
+      <div class="form-group">
+        <label>ID du responsable de projet</label>
+        <select class="form-control" formControlName="idresponsable"
+                [ngClass]="{'is-invalid': submitted && projetFormGroup.controls.idresponsable.errors}">
+          <option value="">Sélectionnez un employé</option>
+          <option *ngFor="let employe of employes" [value]="employe.idemploye">
+            {{ employe.nom }} {{ employe.prenom }}
+          </option>
+        </select>
+        <div *ngIf="submitted && projetFormGroup.controls.idresponsable.errors" class="invalid-feedback">
+          <div *ngIf="projetFormGroup.controls.idresponsable.errors.required">
+            Responsable obligatoire
+          </div>
+        </div>
+      </div>
+      <button (click)="onSaveProjet()" class="btn btn-success" >
+        Save
+      </button>
+    </form>
+  </div>
+
+</div>
+

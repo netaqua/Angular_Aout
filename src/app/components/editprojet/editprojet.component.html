@@ -1,0 +1,74 @@
+<div class="container" *ngIf="deleted == false">
+  <form [formGroup]="projetFormGroup" *ngIf="projetFormGroup">
+
+    <div class = "form-group">
+      <label>Id du projet</label>
+      <input type ="text" class="form-control" value="{{idProjet}}" formControlName="idprojet" readonly>
+    </div>
+
+    <div class = "form-group">
+      <label>Nom du projet</label>
+      <input type ="text" class="form-control" formControlName="nomproj"
+             [ngClass]="{'is-invalid': submitted && projetFormGroup.controls.nomproj.errors}">
+      <div *ngIf="submitted && projetFormGroup.controls.nomproj.errors" class ="invalid-feedback">
+        <div *ngIf="projetFormGroup.controls.nomproj.errors.required">
+          nom du projet obligatoire
+        </div>
+      </div>
+    </div>
+    <div class = "form-group">
+      <label>Date de debut du projet</label>
+      <input type ="date" class="form-control" formControlName="datedebut"
+             [ngClass]="{'is-invalid': submitted && projetFormGroup.controls.datedebut.errors}">
+      <div *ngIf="submitted && projetFormGroup.controls.datedebut.errors" class ="invalid-feedback">
+        <div *ngIf="projetFormGroup.controls.datedebut.errors.required">
+          Date du debut de projet obligatoire
+        </div>
+      </div>
+    </div>
+    <div class = "form-group">
+      <label>Date de fin du projet</label>
+      <input type ="date" class="form-control" formControlName="datefin"
+             [ngClass]="{'is-invalid': submitted && projetFormGroup.controls.datefin.errors}">
+      <div *ngIf="submitted &&projetFormGroup.controls.datefin.errors" class ="invalid-feedback">
+        <div *ngIf="projetFormGroup.controls.datefin.errors.required">
+          Date de fin de projet obligatoire ( même une date approximative si vous n'en avez pas, elle peut être modifier plus tard)
+        </div>
+      </div>
+    </div>
+    <div class = "form-group">
+      <label>cout du projet</label>
+      <input type ="text" class="form-control" formControlName="cout"
+             [ngClass]="{'is-invalid': submitted && projetFormGroup.controls.cout.errors}">
+      <div *ngIf="submitted &&projetFormGroup.controls.cout.errors" class ="invalid-feedback">
+        <div *ngIf="projetFormGroup.controls.cout.errors.required">
+          Montant du projet obligatoire
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>ID du responsable de projet</label>
+      <select class="form-control" formControlName="idresponsable"
+              [ngClass]="{'is-invalid': submitted && projetFormGroup.controls.idresponsable.errors}">
+        <option value="">Sélectionnez un employé</option>
+        <option *ngFor="let employe of employes" [value]="employe.idemploye">
+          {{ employe.nom }} {{ employe.prenom }}
+        </option>
+      </select>
+      <div *ngIf="submitted && projetFormGroup.controls.idresponsable.errors" class="invalid-feedback">
+        <div *ngIf="projetFormGroup.controls.idresponsable.errors.required">
+          Responsable obligatoire
+        </div>
+      </div>
+    </div>
+    <nav class="navbar">
+      <ul class="navbar navbar-nav">
+        <li class="nav-item">
+          <button (click)="onUpdateProjet()" class="btn">
+            Enregistrer
+          </button>
+        </li>
+      </ul>
+    </nav>
+  </form>
+</div>

@@ -1,0 +1,64 @@
+<div class="container">
+
+  <form [formGroup]="employeFormGroup" *ngIf="employeFormGroup">
+
+    <div class = "form-group">
+      <label>Matricule </label>
+      <input type ="text" class="form-control" formControlName="matricule"
+             [ngClass]="{'is-invalid': submitted &&  employeFormGroup.controls.matricule.errors}">
+      <div *ngIf="submitted &&  employeFormGroup.controls.matricule.errors" class ="invalid-feedback">
+        <div *ngIf="employeFormGroup.controls.matricule.errors.required">
+         Matricule obligatoire
+        </div>
+      </div>
+    </div>
+
+    <div class = "form-group">
+      <label>Nom</label>
+      <input type ="text" class="form-control" formControlName="nom"
+             [ngClass]="{'is-invalid': submitted &&  employeFormGroup.controls.nom.errors}">
+      <div *ngIf="submitted &&  employeFormGroup.controls.nom.errors" class ="invalid-feedback">
+        <div *ngIf="employeFormGroup.controls.nom.errors.required">
+          Nom obligatoire
+        </div>
+      </div>
+    </div>
+
+    <div class = "form-group">
+      <label>Prénom</label>
+      <input type ="text" class="form-control" formControlName="prenom"
+             [ngClass]="{'is-invalid': submitted &&  employeFormGroup.controls.prenom.errors}">
+      <div *ngIf="submitted &&  employeFormGroup.controls.prenom.errors" class ="invalid-feedback">
+        <div *ngIf="employeFormGroup.controls.prenom.errors.required">
+          Prénom obligatoire
+        </div>
+      </div>
+    </div>
+
+    <div class = "form-group">
+      <label>Telephone</label>
+      <input type ="text" class="form-control" formControlName="tel"
+             [ngClass]="{'is-invalid': submitted &&  employeFormGroup.controls.tel.errors}">
+      <div *ngIf="submitted &&  employeFormGroup.controls.tel.errors" class ="invalid-feedback">
+        <div *ngIf="employeFormGroup.controls.tel.errors.required">
+          Téléphone obligatoire
+        </div>
+      </div>
+    </div>
+
+    <div class = "form-group">
+      <label>Mail</label>
+      <input type ="text" class="form-control" formControlName="mail"
+             [ngClass]="{'is-invalid': submitted &&  employeFormGroup.controls.mail.errors}">
+      <div *ngIf="submitted &&  employeFormGroup.controls.mail.errors" class ="invalid-feedback">
+        <div *ngIf="employeFormGroup.controls.mail.errors.required">
+          Mail obligatoire
+        </div>
+      </div>
+    </div>
+
+    <button (click)="onSaveEmploye()" class="btn btn-success" >
+      enregister
+    </button>
+  </form>
+</div>

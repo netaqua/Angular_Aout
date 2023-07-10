@@ -1,0 +1,45 @@
+<nav class="navbar">
+  <ul class="navbar navbar-nav">
+    <li>
+      <p>Recherche par titre</p>
+      <form #f="ngForm" (ngSubmit)="onSearch(f.value)" class="forminline">
+        <input ngModel name="nomproj" type="text">
+        <button class="btn btn-sm btn-outline-info m-lg-2">
+          <span class="fa fa-search"></span>
+        </button>
+      </form>
+    </li>
+  </ul>
+</nav>
+<ng-container *ngIf="projets">
+  <ng-container *ngIf="projets.length > 0; else inconnu">
+    <table class="table">
+      <tbody>
+      <tr *ngFor="let p of projets">
+        <td>
+          ID : {{p.idprojet}} Nom : {{p.nomproj}}
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </ng-container>
+  <ng-template #inconnu>
+    <h2>Aucun projet trouvé</h2>
+  </ng-template>
+</ng-container>
+<ng-container *ngIf="employes">
+  <ng-container *ngIf="employes.length > 0; else inconnu">
+    <table class="table">
+      <tbody>
+      <tr *ngFor="let e of employes">
+        <td>
+          ID : {{ e.idemploye }} Sigle : {{ e.matricule }} Nom : {{ e.nom }} Prenom : {{ e.prenom }}
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </ng-container>
+  <ng-template #inconnu>
+    <h2>Aucun employé trouvé</h2>
+  </ng-template>
+</ng-container>

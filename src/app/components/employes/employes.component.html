@@ -1,0 +1,55 @@
+<br>
+<nav class="navbar">
+  <div class="container justify-content-center">
+    <form #f="ngForm" (ngSubmit)="onSearch(f.value)" class="form-inline">
+      <input ngModel name="nom" type="text" placeholder="Rechercher un employé (Nom)" class="form-control">
+      <button class="btn" type="submit">Rechercher</button>
+      <button (click)="onNewEmploye()" class="btn">Nouvel employé</button>
+    </form>
+  </div>
+</nav>
+
+<br>
+<h5>Pour afficher la liste complète des employés, effectuez une recherche à vide.</h5>
+
+<ng-container *ngIf="employes">
+  <ng-container *ngIf="employes.length > 0; else inconnu">
+    <table class="table">
+      <thead>
+      <tr>
+        <th>Id de l'employé</th>
+        <th>Matricule de l'employé</th>
+        <th>Nom de l'employé</th>
+        <th>Prénom de l'employé</th>
+        <th>Téléphone de l'employé</th>
+        <th>Mail de l'employé</th>
+        <th>Supprimer</th>
+        <th>Editer</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let e of employes">
+        <td>{{e.idemploye}}</td>
+        <td>{{e.matricule}}</td>
+        <td>{{e.nom}}</td>
+        <td>{{e.prenom}}</td>
+        <td>{{e.tel}}</td>
+        <td>{{e.mail}}</td>
+        <td>
+          <button (click)="onDelete(e)" class="btn btn-danger">
+            <span class="fa fa-trash-o"></span>
+          </button>
+        </td>
+        <td>
+          <button (click)="onEdit(e)" class="btn btn-danger">
+            <span class="fa fa-edit"></span>
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </ng-container>
+  <ng-template #inconnu>
+    Nom inconnu
+  </ng-template>
+</ng-container>

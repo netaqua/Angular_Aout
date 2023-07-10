@@ -1,0 +1,40 @@
+<ng-container *ngIf="projets">
+  <ng-container *ngIf="projets!= null else inconnu">
+    <table class="table">
+      <thead>
+      <th>Id du projet</th>
+      <th>Nom du projet</th>
+      <th>Date de debut</th>
+      <th>Date de fin</th>
+      <th>Cout du projet</th>
+      <th>Id du responsable</th>
+      <th>Supprimer</th>
+      <th>Editer</th>
+      </thead>
+      <tbody>
+      <tr *ngFor="let p of projets">
+        <td>{{p.idprojet}}</td>
+        <td>{{p.nomproj}}</td>
+        <td>{{p.datedebut}}</td>
+        <td>{{p.datefin}}</td>
+        <td>{{p.cout}} €</td>
+        <td>{{p.idresponsable}}</td>
+        <td>
+          <button (click)=onDelete(p) class="btn">
+            <span class = "fa fa-trash-o"></span>
+          </button>
+        </td>
+        <td>
+          <button (click)=onEdit(p) class="btn">
+            <span class = "fa fa-edit"></span>
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </ng-container>
+  <ng-template #inconnu>
+    id inconnu
+  </ng-template>
+</ng-container>
+

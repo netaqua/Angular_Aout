@@ -1,0 +1,91 @@
+/* Couleurs */
+:root {
+  --main-bg-color: #A48686;
+  --text-color: #ffffff;
+  --accent-color: #9C7575;
+}
+
+/* Styles généraux */
+body {
+  background-color: var(--main-bg-color);
+  color: var(--text-color);
+  font-family: "Arial", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1 {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+p {
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+/* Styles pour la barre de navigation */
+.navbar {
+  background-color: var(--accent-color);
+  padding: 10px 0;
+}
+
+.navbar h1 {
+  font-size: 24px;
+  font-weight: bold;
+  color: var(--text-color);
+}
+
+.navbar p {
+  font-size: 14px;
+  color: var(--text-color);
+  margin-bottom: 0;
+}
+
+/* Styles pour les boutons */
+.btn {
+  background-color: #6E3D3D;
+  border: 2px black;
+  color: var(--text-color);
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.btn:hover {
+  background-color: #926E6E;
+}
+
+/* Styles pour le tableau des employés */
+.table {
+  background-color: var(--main-bg-color);
+  color: var(--text-color);
+}
+
+.table th {
+  font-weight: bold;
+  text-align: left;
+  padding: 10px;
+  border-bottom: 2px solid var(--accent-color);
+}
+
+.table td {
+  padding: 10px;
+}
+
+/* Style pour le message "Nom inconnu" */
+.unknown {
+  color: var(--accent-color);
+  font-style: italic;
+}

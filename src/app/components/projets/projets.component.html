@@ -1,0 +1,107 @@
+<nav class="navbar">
+  <div class="container justify-content-center">
+    <ul class="navbar navbar-nav">
+      <li>
+        <p>Recherche par id</p>
+        <form #f="ngForm" (ngSubmit)="onSearch(f.value)" class="form-inline">
+          <input ngModel name="idprojet" type="number" min="1" class="form-control">
+          <button class="btn">
+            <span class="fa fa-search"></span>
+          </button>
+        </form>
+
+        <p>Recherche par cout</p>
+        <form #g="ngForm" (ngSubmit)="onSearchCout(g.value)" class="form-inline">
+          <input ngModel name="cout" type="double" min="1" class="form-control">
+          <button class="btn">
+            <span class = "fa fa-search"></span>
+          </button>
+        </form>
+      </li>
+      <li>
+        <button (click)="onNewProjet()" class="btn">Nouveau projet</button>
+      </li>
+      <li>
+        <button (click)="onProjetALL()" class="btn">Tous les projets</button>
+      </li>
+    </ul>
+  </div>
+</nav>
+<ng-container *ngIf="projet">
+  <ng-container *ngIf="projet!= null else inconnu">
+    <table class="table">
+      <thead>
+      <th>Id du projet</th>
+      <th>Nom du projet</th>
+      <th>Date de début</th>
+      <th>Date de fin</th>
+      <th>Coût du projet</th>
+      <th>Id du responsable</th>
+      <th>Supprimer</th>
+      <th>Editer</th>
+      </thead>
+      <tbody>
+      <tr>
+        <td>{{projet.idprojet}}</td>
+        <td>{{projet.nomproj}}</td>
+        <td>{{projet.datedebut}}</td>
+        <td>{{projet.datefin}}</td>
+        <td>{{projet.cout}} €</td>
+        <td>{{projet.idresponsable}}</td>
+        <td>
+          <button (click)="onDelete(projet)" class="btn btn-danger">
+            <span class="fa fa-trash-o"></span>
+          </button>
+        </td>
+        <td>
+          <button (click)="onEdit(projet)" class="btn btn-danger">
+            <span class="fa fa-edit"></span>
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </ng-container>
+  <ng-template #inconnu>
+    Id inconnu
+  </ng-template>
+</ng-container>
+<ng-container *ngIf="projets">
+  <ng-container *ngIf="projets.length > 0 else inconnu">
+    <table class="table">
+      <thead>
+      <th>Id du projet</th>
+      <th>Nom du projet</th>
+      <th>Date de debut</th>
+      <th>Date de fin</th>
+      <th>Cout du projet</th>
+      <th>Id du responsable</th>
+      <th>Supprimer</th>
+      <th>Editer</th>
+      </thead>
+      <tbody>
+      <tr *ngFor="let p of projets">
+        <td>{{p.idprojet}}</td>
+        <td>{{p.nomproj}}</td>
+        <td>{{p.datedebut}}</td>
+        <td>{{p.datefin}}</td>
+        <td>{{p.cout}} €</td>
+        <td>{{p.idresponsable}}</td>
+        <td>
+          <button (click)=onDelete(p) class="btn">
+            <span class = "fa fa-trash-o"></span>
+          </button>
+        </td>
+        <td>
+          <button (click)=onEdit(p) class="btn">
+            <span class = "fa fa-edit"></span>
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </ng-container>
+  <ng-template #inconnu>
+    Cout introuvable
+  </ng-template>
+</ng-container>
